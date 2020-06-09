@@ -1,0 +1,15 @@
+.card {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+}
+
+.card__image {
+  flex-grow: 1;
+  height: 100px;
+  width: 100px;
+}
+
+.card__price {
+  text-align: center;
+}

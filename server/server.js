@@ -5,10 +5,13 @@ import bodyParser from 'body-parser'
 import sockjs from 'sockjs'
 import { renderToStaticNodeStream } from 'react-dom/server'
 import React from 'react'
+// import axios from 'axios'
 
 import cookieParser from 'cookie-parser'
 import config from './config'
 import Html from '../client/html'
+
+// const { readFile } = require('fs').promises
 
 const Root = () => ''
 
@@ -40,6 +43,19 @@ const middleware = [
 ]
 
 middleware.forEach((it) => server.use(it))
+
+// const read = async () => {
+//   return readFile(`${__dirname}/data.json`, { encoding: 'utf8' }).then((data) => JSON.parse(data))
+// }
+
+// server.use('/', (req, res) => {
+//   res.redirect('/api/her')
+// })
+
+// server.use('/api/her', async (req, res) => {
+//   const goods = await read()
+//   res.json(goods)
+// })
 
 server.use('/api/', (req, res) => {
   res.status(404)

@@ -1,18 +1,21 @@
-import React, { useState } from 'react'
-import Head from './head'
+import React from 'react'
+// import axios from 'axios'
+import Header from './header'
+import Card from './card'
+
 // import wave from '../assets/images/wave.jpg'
 
 const Home = () => {
-  const [counter, setCounterNew] = useState(0)
-
+  // const good = axios('../../server/data.json').then((it) => it.data)
+  // console.log(JSON.stringify(good))
   return (
     <div>
-      <Head title="Hello" />
-      <img alt="wave" src="images/wave.jpg" />
-      <button type="button" onClick={() => setCounterNew(counter + 1)}>
-        updateCounter
-      </button>
-      <div> Hello World Dashboard {counter} </div>
+      <div>
+        <Header />
+      </div>
+      <div>
+        <Card />
+      </div>
     </div>
   )
 }
