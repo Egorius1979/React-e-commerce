@@ -1,28 +1,33 @@
 import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { setCurrency } from '../redux/reducers/goods'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  setCurrency,
+  setEURO,
+  setUSD,
+  setCAD,
+  setSortName,
+  setSortPrice
+} from '../redux/reducers/goods'
 
 // import { Link } from 'react-router-dom'
 
 const Header = () => {
-  // const { userName, userRepo } = useParams()
-
   return (
-    <div>
-      <ul className="flex">
-        <li className="mr-6">
+    <div className=" p-6">
+      <ul className="flex items-center">
+        <li className="mr-20">
           <a id="brand-name" className="text-blue-500 hover:text-blue-800" href="/">
             Main Page!
           </a>
         </li>
-        <li className="mr-6">
+        <li className="mr-20">
           <a href="#">
             <Currency />
           </a>
         </li>
-        <li className="mr-6">
-          <a className="text-blue-500 hover:text-blue-800" href="#">
-            Link
+        <li className="mr-20">
+          <a href="#">
+            <Sort />
           </a>
         </li>
         <li className="mr-6">
@@ -36,7 +41,7 @@ const Header = () => {
 }
 
 const Currency = () => {
-  // const currency = useSelector((store) => store.goods.currency)
+  const currency = useSelector((store) => store.goods.currency)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -44,24 +49,61 @@ const Currency = () => {
   }, [])
 
   return (
-    <div className="flex">
-      <ul>
+    <div>
+      <ul className="flex flex-row grid grid-cols-3 divide-x divide-gray-600 border-black border-2 rounded-full p-2">
         <li>
-          <button className="mr-2 text-green-700 hover:text-red-800" type="button">
+          <button
+            onClick={() => dispatch(setEURO())}
+            className="text-green-700 w-12 hover:text-red-800 text-center"
+            type="button"
+          >
             EUR
           </button>
         </li>
         <li>
-          <button className="mr-2 text-green-700 hover:text-red-800" type="button">
+          <button
+            onClick={() => dispatch(setUSD(currency))}
+            className="text-green-700 w-12 hover:text-red-800 text-center"
+            type="button"
+          >
             USD
           </button>
         </li>
         <li>
-          <button className="mr-2 text-green-700 hover:text-red-800" type="button">
+          <button
+            onClick={() => dispatch(setCAD(currency))}
+            className="text-green-700 w-12 hover:text-red-800 text-center"
+            type="button"
+          >
             CAD
           </button>
         </li>
       </ul>
+    </div>
+  )
+}
+
+const Sort = () => {
+  const dispatch = useDispatch()
+
+  return (
+    <div>
+      <button
+        onClick={() => dispatch(setSortName())}
+        id="sort-price"
+        type="button"
+        className=" mr-1 text-yellow-900 hover:text-red-800 text-center rounded-l-lg border-gray-600 border p-2 w-40"
+      >
+        sorting A-Z
+      </button>
+      <button
+        onClick={() => dispatch(setSortPrice())}
+        id="sort-name"
+        type="button"
+        className="text-yellow-900 hover:text-red-800 text-center rounded-r-lg border-gray-600 border p-2 w-40"
+      >
+        sorting by price
+      </button>
     </div>
   )
 }

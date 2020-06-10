@@ -8,10 +8,12 @@
   flex-grow: 1;
   height: 100px;
   width: 100px;
+  padding-bottom: 10px;
 }
 
 .card__price {
   text-align: center;
+  padding-bottom: 10px;
 }
 
 .card__button {
@@ -19,6 +21,7 @@
   border-style: solid;
   border-width: 1px;
   border-color: #718096;
+  border-radius: 0.375rem;
 }
 
 .card__title {
