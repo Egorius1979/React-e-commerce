@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { setCurrency } from '../redux/reducers/goods'
+
 // import { Link } from 'react-router-dom'
 
 const Header = () => {
@@ -33,24 +36,33 @@ const Header = () => {
 }
 
 const Currency = () => {
+  // const currency = useSelector((store) => store.goods.currency)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setCurrency())
+  }, [])
+
   return (
-    <ul className="flex">
-      <li>
-        <button className="mr-2 text-green-700 hover:text-red-800" type="button">
-          EUR
-        </button>
-      </li>
-      <li>
-        <button className="mr-2 text-green-700 hover:text-red-800" type="button">
-          USD
-        </button>
-      </li>
-      <li>
-        <button className="mr-2 text-green-700 hover:text-red-800" type="button">
-          CAD
-        </button>
-      </li>
-    </ul>
+    <div className="flex">
+      <ul>
+        <li>
+          <button className="mr-2 text-green-700 hover:text-red-800" type="button">
+            EUR
+          </button>
+        </li>
+        <li>
+          <button className="mr-2 text-green-700 hover:text-red-800" type="button">
+            USD
+          </button>
+        </li>
+        <li>
+          <button className="mr-2 text-green-700 hover:text-red-800" type="button">
+            CAD
+          </button>
+        </li>
+      </ul>
+    </div>
   )
 }
 

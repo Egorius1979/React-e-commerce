@@ -5,13 +5,13 @@ import bodyParser from 'body-parser'
 import sockjs from 'sockjs'
 import { renderToStaticNodeStream } from 'react-dom/server'
 import React from 'react'
-// import axios from 'axios'
+import axios from 'axios'
 
 import cookieParser from 'cookie-parser'
 import config from './config'
 import Html from '../client/html'
 
-// const { readFile } = require('fs').promises
+// const { readFile, writeFile, unlink } = require('fs').promises
 
 const Root = () => ''
 
@@ -44,18 +44,14 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
-// const read = async () => {
-//   return readFile(`${__dirname}/data.json`, { encoding: 'utf8' }).then((data) => JSON.parse(data))
+// async function write(curr) {
+//   return writeFile(`${__dirname}/currencies.json`, JSON.stringify(curr), { encoding: 'utf8' })
 // }
-
-// server.use('/', (req, res) => {
-//   res.redirect('/api/her')
-// })
-
-// server.use('/api/her', async (req, res) => {
-//   const goods = await read()
-//   res.json(goods)
-// })
+server.get('/api/currencies', (req, res) => {
+  const { data: curr } = axios('https://api.exchangeratesapi.io/latest')
+  // await write(curr)
+  res.json(curr)
+})
 
 server.use('/api/', (req, res) => {
   res.status(404)
