@@ -9,9 +9,7 @@ const Card = () => {
   const multiplier = useSelector((store) => store.goods.baseCurrency)
   const currencyName = useSelector((store) => store.goods.currencyName)
   const sorting = useSelector((store) => store.goods.sorting)
-  // const [sort, setSort] = useState('')
-
-  // useEffect(() => setSort(sorting), [sorting])
+  // const dispatch = useDispatch()
 
   return (
     <div className="flex flex-wrap">

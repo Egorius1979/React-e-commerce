@@ -13,7 +13,7 @@ import {
 
 const Header = () => {
   return (
-    <div className=" p-6">
+    <div className="p-6">
       <ul className="flex items-center">
         <li className="mr-20">
           <a id="brand-name" className="text-blue-500 hover:text-blue-800" href="/">
