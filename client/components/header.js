@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
 import {
   setCurrency,
   setEURO,
@@ -9,32 +10,31 @@ import {
   setSortPrice
 } from '../redux/reducers/goods'
 
-// import { Link } from 'react-router-dom'
-
 const Header = () => {
+  const amount = useSelector((store) => store.goods.amount)
+  const price = useSelector((store) => store.goods.price)
+  const multiplier = useSelector((store) => store.goods.multiplier)
+  const currencyName = useSelector((store) => store.goods.currencyName)
+
   return (
     <div className="p-6">
       <ul className="flex items-center">
-        <li className="mr-20">
-          <a id="brand-name" className="text-blue-500 hover:text-blue-800" href="/">
+        <Link to="/">
+          <li id="brand-name" className="mr-20 text-blue-500 hover:text-blue-800">
             Main Page!
-          </a>
+          </li>
+        </Link>
+        <li className="mr-20">
+          <Currency />
         </li>
         <li className="mr-20">
-          <a href="#">
-            <Currency />
-          </a>
+          <Sort />
         </li>
-        <li className="mr-20">
-          <a href="#">
-            <Sort />
-          </a>
-        </li>
-        <li className="mr-6">
-          <a className="text-gray-400 cursor-not-allowed" href="#">
-            Disabled
-          </a>
-        </li>
+        <Link to="/basket">
+          <li className="mr-20 text-gray-700">{amount}</li>
+        </Link>
+        <li className="mr-1 text-gray-700">{(price * multiplier).toFixed(2)}</li>
+        <li>{currencyName}</li>
       </ul>
     </div>
   )

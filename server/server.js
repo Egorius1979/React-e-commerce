@@ -47,9 +47,8 @@ middleware.forEach((it) => server.use(it))
 // async function write(curr) {
 //   return writeFile(`${__dirname}/currencies.json`, JSON.stringify(curr), { encoding: 'utf8' })
 // }
-server.get('/api/currencies', (req, res) => {
-  const { data: curr } = axios('https://api.exchangeratesapi.io/latest')
-  // await write(curr)
+server.get('/api/currencies', async (req, res) => {
+  const { data: curr } = await axios('https://api.exchangeratesapi.io/latest')
   res.json(curr)
 })
 
