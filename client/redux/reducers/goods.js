@@ -1,9 +1,7 @@
 import axios from 'axios'
 
 const SET_CURRENCY = 'SET_CURRENCY'
-const SET_EURO = 'SET_EURO'
-const SET_USD = 'SET_USD'
-const SET_CAD = 'SET_CAD'
+const SET_CURRENT_CURRENCY = 'SET_CURRENT_CURRENCY'
 const SET_SORT = 'SET_SORT'
 const SET_AMOUNT = 'ADD_AMOUNT'
 
@@ -21,12 +19,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case SET_CURRENCY:
       return { ...state, currency: action.currency }
-    case SET_EURO:
-      return { ...state, multiplier: action.multiplier, currencyName: 'EUR' }
-    case SET_USD:
-      return { ...state, multiplier: action.multiplier, currencyName: 'USD' }
-    case SET_CAD:
-      return { ...state, multiplier: action.multiplier, currencyName: 'CAD' }
+    case SET_CURRENT_CURRENCY:
+      return { ...state, multiplier: action.multiplier, currencyName: action.currencyName }
     case SET_SORT:
       return { ...state, sorting: action.sorting }
     case SET_AMOUNT:
@@ -51,15 +45,15 @@ export function setCurrency() {
 }
 
 export function setEURO() {
-  return { type: SET_EURO, multiplier: 1 }
+  return { type: SET_CURRENT_CURRENCY, multiplier: 1, currencyName: 'EUR' }
 }
 
 export function setUSD(currency) {
-  return { type: SET_USD, multiplier: currency.USD }
+  return { type: SET_CURRENT_CURRENCY, multiplier: currency.USD, currencyName: 'USD' }
 }
 
 export function setCAD(currency) {
-  return { type: SET_CAD, multiplier: currency.CAD }
+  return { type: SET_CURRENT_CURRENCY, multiplier: currency.CAD, currencyName: 'CAD' }
 }
 
 export function setSortName() {
