@@ -1,5 +1,4 @@
 import React from 'react'
-// , { useState, useEffect }
 import { useDispatch, useSelector } from 'react-redux'
 import object from '../../server/data.json'
 import { removeAmount, addAmount } from '../redux/reducers/goods'
@@ -38,7 +37,7 @@ const Card = () => {
                     -
                   </button>
                 </div>
-                <div className="bg-teal-200">{cart[it.id]}</div>
+                <div className="bg-teal-200 card__product-amount">{cart[it.id]}</div>
                 <div>
                   <button
                     onClick={() => dispatch(addAmount(cart, it.id, amount, price, it.price))}

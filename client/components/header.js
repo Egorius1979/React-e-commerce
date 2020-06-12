@@ -1,14 +1,8 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
-import {
-  setCurrency,
-  setEURO,
-  setUSD,
-  setCAD,
-  setSortName,
-  setSortPrice
-} from '../redux/reducers/goods'
+import Currency from './currency'
+import Sort from './sort'
 
 const Header = () => {
   const amount = useSelector((store) => store.goods.amount)
@@ -31,79 +25,14 @@ const Header = () => {
           <Sort />
         </li>
         <Link to="/basket">
-          <li className="mr-20 text-gray-700">{amount}</li>
+          <div className="flex items-center bg-green-300 rounded-b-lg border border-red-700 p-2 w-20">
+            <div className="mr-2">Cart:</div>
+            <div className="">{amount}</div>
+          </div>
         </Link>
-        <li className="mr-1 text-gray-700">{(price * multiplier).toFixed(2)}</li>
+        <li className="ml-10 mr-1">{(price * multiplier).toFixed(2)}</li>
         <li>{currencyName}</li>
       </ul>
-    </div>
-  )
-}
-
-const Currency = () => {
-  const currency = useSelector((store) => store.goods.currency)
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(setCurrency())
-  }, [])
-
-  return (
-    <div>
-      <ul className="flex flex-row grid grid-cols-3 divide-x divide-gray-600 border-black border-2 rounded-full p-2">
-        <li>
-          <button
-            onClick={() => dispatch(setEURO())}
-            className="text-green-700 w-12 hover:text-red-800 text-center"
-            type="button"
-          >
-            EUR
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => dispatch(setUSD(currency))}
-            className="text-green-700 w-12 hover:text-red-800 text-center"
-            type="button"
-          >
-            USD
-          </button>
-        </li>
-        <li>
-          <button
-            onClick={() => dispatch(setCAD(currency))}
-            className="text-green-700 w-12 hover:text-red-800 text-center"
-            type="button"
-          >
-            CAD
-          </button>
-        </li>
-      </ul>
-    </div>
-  )
-}
-
-const Sort = () => {
-  const dispatch = useDispatch()
-
-  return (
-    <div>
-      <button
-        onClick={() => dispatch(setSortName())}
-        id="sort-price"
-        type="button"
-        className=" mr-1 text-yellow-900 hover:text-red-800 text-center rounded-l-lg border-gray-600 border p-2 w-40"
-      >
-        sorting A-Z
-      </button>
-      <button
-        onClick={() => dispatch(setSortPrice())}
-        id="sort-name"
-        type="button"
-        className="text-yellow-900 hover:text-red-800 text-center rounded-r-lg border-gray-600 border p-2 w-40"
-      >
-        sorting by price
-      </button>
     </div>
   )
 }
