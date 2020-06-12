@@ -4,10 +4,8 @@ const SET_CURRENCY = 'SET_CURRENCY'
 const SET_EURO = 'SET_EURO'
 const SET_USD = 'SET_USD'
 const SET_CAD = 'SET_CAD'
-const SET_SORT_NAME = 'SET_SORT_NAME'
-const SET_SORT_PRICE = 'SET_SORT_PRICE'
-const REMOVE_AMOUNT = 'REMOVE_AMOUNT'
-const ADD_AMOUNT = 'ADD_AMOUNT'
+const SET_SORT = 'SET_SORT'
+const SET_AMOUNT = 'ADD_AMOUNT'
 
 const initialState = {
   currency: {},
@@ -29,18 +27,9 @@ export default (state = initialState, action) => {
       return { ...state, multiplier: action.multiplier, currencyName: 'USD' }
     case SET_CAD:
       return { ...state, multiplier: action.multiplier, currencyName: 'CAD' }
-    case SET_SORT_NAME:
+    case SET_SORT:
       return { ...state, sorting: action.sorting }
-    case SET_SORT_PRICE:
-      return { ...state, sorting: action.sorting }
-    case ADD_AMOUNT:
-      return {
-        ...state,
-        amount: action.amount,
-        price: action.price,
-        cart: action.cart
-      }
-    case REMOVE_AMOUNT:
+    case SET_AMOUNT:
       return {
         ...state,
         amount: action.amount,
@@ -74,16 +63,16 @@ export function setCAD(currency) {
 }
 
 export function setSortName() {
-  return { type: SET_SORT_NAME, sorting: 'title' }
+  return { type: SET_SORT, sorting: 'title' }
 }
 
 export function setSortPrice() {
-  return { type: SET_SORT_PRICE, sorting: 'price' }
+  return { type: SET_SORT, sorting: 'price' }
 }
 
 export function addAmount(cart, id, amount, currentPrice, prodPrice) {
   return {
-    type: ADD_AMOUNT,
+    type: SET_AMOUNT,
     amount: amount + 1,
     price: currentPrice + prodPrice,
     cart: { ...cart, [id]: !cart[id] ? 1 : cart[id] + 1 }
@@ -92,7 +81,7 @@ export function addAmount(cart, id, amount, currentPrice, prodPrice) {
 
 export function removeAmount(cart, id, amount, currentPrice, prodPrice) {
   return {
-    type: ADD_AMOUNT,
+    type: SET_AMOUNT,
     amount: !cart[id] ? amount : amount - 1,
     price: !cart[id] ? currentPrice : currentPrice - prodPrice,
     cart:
