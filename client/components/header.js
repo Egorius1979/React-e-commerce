@@ -43,7 +43,7 @@ const Header = () => {
           <div className="ml-5 flex items-center">
             <div className="mr-3">Cart:</div>
             <Link to="/basket">
-              <div className="bg-green-600 text-center rounded-b-lg border border-red-900 p-1 w-10 text-black text-sm">
+              <div className="bg-green-700 text-center rounded-b-lg border border-red-900 p-1 w-10 text-black text-sm">
                 {amount}
               </div>
             </Link>

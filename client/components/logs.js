@@ -8,16 +8,18 @@ const Log = () => {
 
   useEffect(() => {
     dispatch(getLogs())
-  }, [])
+  }, [logs])
 
   return (
-    <div className="flex flex-col p-3 divide-y-4">
-      {logs.map((it) => (
-        <div key={it.date}>
-          <div className="mr-2 text-red-900">{it.date}:</div>
-          <div>{JSON.stringify(it.action)}</div>
-        </div>
-      ))}
+    <div className="flex flex-col p-2 divide-y-2">
+      {logs.map((it) => {
+        return (
+          <div className="pt-2" key={it.date}>
+            <div className="text-red-900 ">{it.date}:</div>
+            <div>{JSON.stringify(it.action)}</div>
+          </div>
+        )
+      })}
     </div>
   )
 }
