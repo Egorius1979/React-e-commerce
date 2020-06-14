@@ -10,8 +10,9 @@ import axios from 'axios'
 import cookieParser from 'cookie-parser'
 import config from './config'
 import Html from '../client/html'
+// import next from 'next'
 
-// const { readFile, writeFile, unlink } = require('fs').promises
+const { readFile, writeFile, unlink } = require('fs').promises
 
 const Root = () => ''
 
@@ -44,12 +45,41 @@ const middleware = [
 
 middleware.forEach((it) => server.use(it))
 
-// async function write(curr) {
-//   return writeFile(`${__dirname}/currencies.json`, JSON.stringify(curr), { encoding: 'utf8' })
-// }
-server.get('/api/currencies', async (req, res) => {
+async function write(logs) {
+  return writeFile(`${__dirname}/logs.json`, JSON.stringify(logs), { encoding: 'utf8' })
+}
+const read = async () => {
+  return readFile(`${__dirname}/logs.json`, { encoding: 'utf8' })
+    .then((data) => JSON.parse(data))
+    .catch(() => {
+      const logs = []
+      write(logs)
+      return logs
+    })
+}
+
+server.get('/api/v1/currencies', async (req, res) => {
   const { data: curr } = await axios('https://api.exchangeratesapi.io/latest')
   res.json(curr)
+})
+
+server.get('/api/v1/logs', async (req, res) => {
+  const logs = await read()
+  res.json(logs)
+})
+
+server.post('/api/v1/logs', async (req, res) => {
+  const newLog = req.body
+  const newLogs = await read()
+  const date = +new Date()
+  const newArray = [...newLogs, { date, action: newLog }]
+  write(newArray)
+  res.end()
+})
+
+server.delete('/api/v1/logs', async (req, res) => {
+  unlink(`${__dirname}/logs.json`)
+  res.end()
 })
 
 server.use('/api/', (req, res) => {

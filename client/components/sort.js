@@ -6,22 +6,22 @@ const Sort = () => {
   const dispatch = useDispatch()
 
   return (
-    <div>
+    <div className="">
       <button
         onClick={() => dispatch(setSortName())}
         id="sort-price"
         type="button"
-        className=" mr-1 text-yellow-900 hover:text-red-800 text-center rounded-l-lg border-gray-600 border p-2 w-40"
+        className="bg-gray-800 w-32 flex-shrink-0 hover:bg-gray-900 py-2 px-2 border border-gray-700 rounded-l text-yellow-500 mr-1"
       >
-        sorting A-Z
+        sort by A-Z
       </button>
       <button
         onClick={() => dispatch(setSortPrice())}
         id="sort-name"
         type="button"
-        className="text-yellow-900 hover:text-red-800 text-center rounded-r-lg border-gray-600 border p-2 w-40"
+        className="bg-gray-800 w-32 flex-shrink-0 hover:bg-gray-900 py-2 px-2 border border-gray-700 rounded-r text-yellow-500"
       >
-        sorting by price
+        sort by price
       </button>
     </div>
   )

@@ -70,7 +70,7 @@ const GoodsInCart = () => {
           )
         })}
 
-      <div id="total-amount" className="flex justify-center items-center mr-2 ">
+      <div id="total-amount" className="flex justify-center items-center pt-10">
         <div className="mr-2">Total Price:</div>
         <div className="mr-2">{(price * multiplier).toFixed(2)}</div>
         <div className="">{currencyName}</div>

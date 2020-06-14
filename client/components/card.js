@@ -13,12 +13,12 @@ const Card = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap justify-center p-2 bg-black">
       {object
         .sort((a, b) => (sorting === 'title' ? a.title.localeCompare(b.title) : b.price - a.price))
         .map((it) => {
           return (
-            <div key={it.id} className="card p-2">
+            <div key={it.id} className="card p-4 mr-4 mb-4 bg-gray-800 text-white">
               <div className="card__title">{it.title}</div>
               <div>
                 <img className="flex card__image" src={`${it.image}`} alt="pic" />
@@ -37,7 +37,7 @@ const Card = () => {
                     -
                   </button>
                 </div>
-                <div className="bg-teal-200 card__product-amount">{cart[it.id]}</div>
+                <div className="card__product-amount">{cart[it.id]}</div>
                 <div>
                   <button
                     onClick={() => dispatch(addAmount(cart, it.id, amount, price, it.price))}

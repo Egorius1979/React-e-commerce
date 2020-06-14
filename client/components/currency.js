@@ -8,11 +8,11 @@ const Currency = () => {
 
   useEffect(() => {
     dispatch(setCurrency())
-  })
+  }, [])
 
   return (
     <div>
-      <ul className="flex flex-row grid grid-cols-3 divide-x divide-gray-600 border-black border-2 rounded-full p-2">
+      <ul className="flex flex-row grid grid-cols-3 divide-x divide-gray-600 border-2 rounded-full p-2">
         <li>
           <button
             onClick={() => dispatch(setEURO())}

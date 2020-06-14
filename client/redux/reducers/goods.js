@@ -3,7 +3,7 @@ import axios from 'axios'
 const SET_CURRENCY = 'SET_CURRENCY'
 const SET_CURRENT_CURRENCY = 'SET_CURRENT_CURRENCY'
 const SET_SORT = 'SET_SORT'
-const SET_AMOUNT = 'ADD_AMOUNT'
+const SET_AMOUNT = 'SET_AMOUNT'
 
 const initialState = {
   currency: {},
@@ -30,7 +30,6 @@ export default (state = initialState, action) => {
         price: action.price,
         cart: action.cart
       }
-
     default:
       return state
   }
@@ -39,7 +38,7 @@ export default (state = initialState, action) => {
 export function setCurrency() {
   return function (dispatch) {
     axios
-      .get('/api/currencies')
+      .get('/api/v1/currencies')
       .then((it) => dispatch({ type: SET_CURRENCY, currency: it.data.rates }))
   }
 }
