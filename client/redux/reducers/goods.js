@@ -35,12 +35,15 @@ export default (state = initialState, action) => {
   }
 }
 
-export function setCurrency() {
-  return function (dispatch) {
-    axios
-      .get('/api/v1/currencies')
-      .then((it) => dispatch({ type: SET_CURRENCY, currency: it.data.rates }))
+export function setCurrency(currency) {
+  if (!currency.length) {
+    return function (dispatch) {
+      axios
+        .get('/api/v1/currencies')
+        .then((it) => dispatch({ type: SET_CURRENCY, currency: it.data.rates }))
+    }
   }
+  return { type: SET_CURRENCY, currency }
 }
 
 export function setEURO() {

@@ -8,7 +8,7 @@ const Log = () => {
 
   useEffect(() => {
     dispatch(getLogs())
-  }, [logs])
+  }, [])
 
   return (
     <div className="flex flex-col p-2 divide-y-2">

@@ -7,7 +7,7 @@ const Currency = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setCurrency())
+    dispatch(setCurrency(currency))
   }, [])
 
   return (
