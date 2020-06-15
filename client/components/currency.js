@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import axios from 'axios'
 import { setCurrency, setEURO, setUSD, setCAD } from '../redux/reducers/goods'
 
 const Currency = () => {
@@ -7,7 +8,9 @@ const Currency = () => {
   const dispatch = useDispatch()
 
   useEffect(() => {
-    dispatch(setCurrency(currency))
+    if (!Object.keys(currency).length) {
+      axios.get('/api/v1/currencies').then((it) => dispatch(setCurrency(it.data.rates)))
+    }
   }, [])
 
   return (
