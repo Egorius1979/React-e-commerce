@@ -36,13 +36,6 @@ export default (state = initialState, action) => {
 }
 
 export function setCurrency(currency) {
-  // if (!currency.length) {
-  //   return function (dispatch) {
-  //     axios
-  //       .get('/api/v1/currencies')
-  //       .then((it) => dispatch({ type: SET_CURRENCY, currency: it.data.rates }))
-  //   }
-  // }
   return { type: SET_CURRENCY, currency }
 }
 
@@ -80,7 +73,6 @@ export function removeAmount(cart, id, amount, currentPrice, prodPrice) {
     type: SET_AMOUNT,
     amount: !cart[id] ? amount : amount - 1,
     price: !cart[id] ? currentPrice : currentPrice - prodPrice,
-    cart:
-      cart[id] === 1 || !cart[id] ? { ...cart, [id]: undefined } : { ...cart, [id]: cart[id] - 1 }
+    cart: cart[id] > 1 ? { ...cart, [id]: cart[id] - 1 } : { ...cart, [id]: undefined }
   }
 }
