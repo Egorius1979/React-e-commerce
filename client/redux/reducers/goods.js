@@ -64,15 +64,15 @@ export function addAmount(cart, id, amount, currentPrice, prodPrice) {
     type: SET_AMOUNT,
     amount: amount + 1,
     price: currentPrice + prodPrice,
-    cart: { ...cart, [id]: !cart[id] ? 1 : cart[id] + 1 }
+    cart: { ...cart, [id]: cart[id] ? cart[id] + 1 : 1 }
   }
 }
 
 export function removeAmount(cart, id, amount, currentPrice, prodPrice) {
   return {
     type: SET_AMOUNT,
-    amount: !cart[id] ? amount : amount - 1,
-    price: !cart[id] ? currentPrice : currentPrice - prodPrice,
+    amount: cart[id] ? amount - 1 : amount,
+    price: cart[id] ? currentPrice - prodPrice : currentPrice,
     cart: cart[id] > 1 ? { ...cart, [id]: cart[id] - 1 } : { ...cart, [id]: undefined }
   }
 }
