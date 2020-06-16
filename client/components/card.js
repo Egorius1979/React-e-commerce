@@ -13,7 +13,7 @@ const Card = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="flex flex-wrap justify-center p-2 bg-black">
+    <div className="flex flex-wrap justify-center p-4 bg-black">
       {object
         .sort((a, b) => (sorting === 'title' ? a.title.localeCompare(b.title) : b.price - a.price))
         .map((it) => {
