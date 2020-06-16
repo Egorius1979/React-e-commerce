@@ -37,7 +37,7 @@ const Header = () => {
           <Currency />
         </li>
         <div className="flex-col">
-          <li className="mr-4 pb-10 w-40 text-sm">
+          <li className="mr-4 pb-12 w-40 text-sm">
             {`Total Price: ${(price * multiplier).toFixed(2)} ${currencyName}`}
           </li>
           <div className="ml-5 flex items-center">
