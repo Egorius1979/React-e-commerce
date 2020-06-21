@@ -78,7 +78,7 @@ server.post('/api/v1/logs', async (req, res) => {
 })
 
 server.delete('/api/v1/logs', async (req, res) => {
-  unlink(`${__dirname}/logs.json`)
+  await unlink(`${__dirname}/logs.json`)
   res.end()
 })
 
