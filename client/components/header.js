@@ -13,8 +13,8 @@ const Header = () => {
   const currencyName = useSelector((store) => store.goods.currencyName)
 
   return (
-    <div className="pb-4 pt-4 flex-shrink-0 bg-gray-900 text-white text-xl">
-      <ul className="flex items-center justify-between">
+    <div className="bg-gray-900 text-white text-xl pb-4 pt-4 ">
+      <ul className="hidden md:flex items-center justify-between">
         <div>
           <img src={exploited} alt="Vasya, punk's not dead!!!" />
         </div>
