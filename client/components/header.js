@@ -39,7 +39,7 @@ const Header = () => {
           </div>
           <div className="flex ml-10 text-sm">
             <Link to="/basket">
-              <div className="">{amount}</div>
+              <div className="text-center">{amount}</div>
               <img className="ml-2" src={cartIcon} alt="cart" />
             </Link>
           </div>
