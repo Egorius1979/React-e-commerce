@@ -15,7 +15,7 @@ const Log = () => {
       {logs.map((it) => {
         return (
           <div className="pt-2" key={it.date}>
-            <div className="text-red-900 ">{it.date}:</div>
+            <div className="text-red-900 ">{Date(it.date)}:</div>
             <div>{JSON.stringify(it.action)}</div>
           </div>
         )
