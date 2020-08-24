@@ -27,6 +27,4 @@ const Sort = () => {
   )
 }
 
-Sort.propTypes = {}
-
 export default Sort

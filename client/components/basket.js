@@ -81,6 +81,4 @@ const GoodsInCart = () => {
   )
 }
 
-Cart.propTypes = {}
-
 export default Cart

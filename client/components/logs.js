@@ -24,6 +24,4 @@ const Log = () => {
   )
 }
 
-Log.propTypes = {}
-
 export default Log
