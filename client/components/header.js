@@ -14,7 +14,7 @@ const Header = () => {
   const currencyName = useSelector((store) => store.goods.currencyName)
 
   return (
-    <div className="bg-gray-900 text-white text-xl pb-4 pt-4 ">
+    <div className="bg-gray-900 text-white text-xl py-4">
       <div className="hidden md:flex items-center justify-between">
         <div>
           <img src={exploited} alt="Vasya, punk's not dead!!!" />
@@ -23,7 +23,7 @@ const Header = () => {
           <div id="brand-name" className="mr-20 text-blue-400 hover:text-blue-700 mb-12 ">
             <Link to="/">Main Page!</Link>
           </div>
-          <div id="logs" className="ml-6 text-red-600 hover:text-red-800">
+          <div id="logs" className="ml-6 inline-block text-red-600 hover:text-red-800">
             <Link to="/logs">Logs!</Link>
           </div>
         </div>
@@ -33,14 +33,14 @@ const Header = () => {
         <div className="mr-20 text-sm mb-20">
           <Currency />
         </div>
-        <div className="flex-col">
-          <div className="mr-4 mb-8 w-40 text-sm">
+        <div className="flex-col mt-4">
+          <div className="mb-6 w-40 text-sm">
             {`Total Price: ${(price * multiplier).toFixed(2)} ${currencyName}`}
           </div>
-          <div className="flex ml-10 text-sm">
+          <div className="flex pt-4 ml-10 text-sm">
             <Link to="/basket">
-              <div className="text-center">{amount}</div>
-              <img className="ml-2" src={cartIcon} alt="cart" />
+              <div className="text-center goods">{amount}</div>
+              <img className="ml-2 " src={cartIcon} alt="cart" />
             </Link>
           </div>
         </div>

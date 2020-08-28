@@ -24,3 +24,7 @@
 .gg-menu::after {
     top: 6px
 }
+
+.goods {
+  margin-bottom: -15px;
+}
