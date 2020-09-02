@@ -19,7 +19,7 @@ const Currency = () => {
         <li>
           <button
             onClick={() => dispatch(setEURO())}
-            className="text-green-700 w-12 hover:text-red-800 text-center"
+            className="text-green-700 w-12 hover:text-red-800 text-center text-xs lg:text-base"
             type="button"
           >
             EUR
@@ -28,7 +28,7 @@ const Currency = () => {
         <li>
           <button
             onClick={() => dispatch(setUSD(currency))}
-            className="text-green-700 w-12 hover:text-red-800 text-center"
+            className="text-green-700 w-12 hover:text-red-800 text-center text-xs lg:text-base"
             type="button"
           >
             USD
@@ -37,7 +37,7 @@ const Currency = () => {
         <li>
           <button
             onClick={() => dispatch(setCAD(currency))}
-            className="text-green-700 w-12 hover:text-red-800 text-center"
+            className="text-green-700 w-12 hover:text-red-800 text-center text-xs lg:text-base"
             type="button"
           >
             CAD

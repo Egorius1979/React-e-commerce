@@ -16,14 +16,20 @@ const Header = () => {
   return (
     <div className="bg-gray-900 text-white text-xl py-4">
       <div className="hidden md:flex items-center justify-between">
-        <div>
+        <div className="hidden lg:inline-block">
           <img src={exploited} alt="Vasya, punk's not dead!!!" />
         </div>
         <div className="flex-col">
-          <div id="brand-name" className="mr-20 text-blue-400 hover:text-blue-700 mb-12 ">
+          <div
+            id="brand-name"
+            className="mr-20 text-blue-400 hover:text-blue-700 mb-12 text-xs lg:text-xl"
+          >
             <Link to="/">Main Page!</Link>
           </div>
-          <div id="logs" className="ml-6 inline-block text-red-600 hover:text-red-800">
+          <div
+            id="logs"
+            className="inline-block text-red-600 hover:text-red-800 text-xs lg:text-xl lg:ml-5"
+          >
             <Link to="/logs">Logs!</Link>
           </div>
         </div>
@@ -44,7 +50,7 @@ const Header = () => {
             </Link>
           </div>
         </div>
-        <div>
+        <div className="hidden lg:inline-block">
           <img src={exploited1} alt="Vasya, punk's not dead!!!" />
         </div>
       </div>
