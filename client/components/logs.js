@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { getLogs } from '../redux/reducers/logs'
 
 const Log = () => {
-  const logs = useSelector((store) => store.logs.logsArray)
+  const logs = useSelector((s) => s.logs.logsArray)
   const dispatch = useDispatch()
 
   useEffect(() => {

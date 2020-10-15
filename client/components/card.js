@@ -4,12 +4,7 @@ import object from '../../server/data.json'
 import { removeAmount, addAmount } from '../redux/reducers/goods'
 
 const Card = () => {
-  const currencyName = useSelector((store) => store.goods.currencyName)
-  const multiplier = useSelector((store) => store.goods.multiplier)
-  const sorting = useSelector((store) => store.goods.sorting)
-  const amount = useSelector((store) => store.goods.amount)
-  const price = useSelector((store) => store.goods.price)
-  const cart = useSelector((store) => store.goods.cart)
+  const { currencyName, multiplier, sorting, amount, price, cart } = useSelector((s) => s.goods)
   const dispatch = useDispatch()
 
   return (

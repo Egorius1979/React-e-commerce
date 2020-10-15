@@ -4,7 +4,7 @@ import axios from 'axios'
 import { setCurrency, setEURO, setUSD, setCAD } from '../redux/reducers/goods'
 
 const Currency = () => {
-  const currency = useSelector((store) => store.goods.currency)
+  const currency = useSelector((s) => s.goods.currency)
   const dispatch = useDispatch()
 
   useEffect(() => {

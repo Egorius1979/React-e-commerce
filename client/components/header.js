@@ -8,10 +8,7 @@ import exploited1 from '../assets/static/images/exploited-2.png'
 import cartIcon from '../assets/static/images/cart-red-48.png'
 
 const Header = () => {
-  const amount = useSelector((store) => store.goods.amount)
-  const price = useSelector((store) => store.goods.price)
-  const multiplier = useSelector((store) => store.goods.multiplier)
-  const currencyName = useSelector((store) => store.goods.currencyName)
+  const { currencyName, multiplier, amount, price } = useSelector((s) => s.goods)
 
   return (
     <div className="bg-gray-900 text-white text-xl py-4">
